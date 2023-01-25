@@ -75,8 +75,8 @@ module "s3_access_log_bucket" {
 }
 
 data "aws_iam_policy_document" "default" {
-  count       = module.this.enabled ? 1 : 0
-  source_json = var.policy == "" ? null : var.policy
+  count                   = module.this.enabled ? 1 : 0
+  source_policy_documents = var.policy == "" ? null : [ var.policy ]
 
   statement {
     sid = "AWSCloudTrailAclCheck"

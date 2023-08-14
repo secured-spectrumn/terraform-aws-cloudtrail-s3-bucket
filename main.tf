@@ -1,11 +1,7 @@
 
 module "s3_bucket" {
   source  = "cloudposse/s3-log-storage/aws"
-<<<<<<< HEAD
-  version = "1.0.0"
-=======
   version = "1.4.2"
->>>>>>> c94212c573420b6078456aae430e9f316b9aaa64
   enabled = module.this.enabled
 
   acl                                    = var.acl
@@ -55,13 +51,8 @@ module "access_log_bucket_name" {
 
 module "s3_access_log_bucket" {
   source  = "cloudposse/s3-log-storage/aws"
-<<<<<<< HEAD
-  version = "1.0.0"
-  enabled = module.this.enabled && var.create_access_log_bucket
-=======
   version = "1.4.2"
   enabled = local.create_access_log_bucket
->>>>>>> c94212c573420b6078456aae430e9f316b9aaa64
 
   acl                                    = var.acl
   bucket_name                            = local.access_log_bucket_name
@@ -93,11 +84,7 @@ module "s3_access_log_bucket" {
 
 data "aws_iam_policy_document" "default" {
   count                   = module.this.enabled ? 1 : 0
-<<<<<<< HEAD
-  source_policy_documents = var.policy == "" ? null : [ var.policy ]
-=======
   source_policy_documents = var.policy == "" ? null : [var.policy]
->>>>>>> c94212c573420b6078456aae430e9f316b9aaa64
 
   statement {
     sid = "AWSCloudTrailAclCheck"
